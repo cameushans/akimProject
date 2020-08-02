@@ -6,51 +6,18 @@ import { createStackNavigator } from 'react-navigation-stack';
 import MapView , { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
-import { MapScreen } from "./screen/MapScreen"
+import   MapScreen    from "./screen/MapScreen";
 
 
  function App ({ navigation }) {
-
-
   
   return (
     <View style={styles.container}>
-          <Button title="go to map" onPress={()=> navigation.navigate("map")} />
+          <Button title="Go To Map" onPress={()=> navigation.navigate("Map")} />
     </View>
   );
 }
 
-
- function Map() {
-  const [location,setLocation] = useState({latitude:0,longitude:0});
-
-
-  useEffect(() => {
-    const checkPerm = async () => {
-      var { status } = await Permissions.askAsync(Permissions.LOCATION)
-      if(status === "granted"){
-              Location.watchPositionAsync({distanceInterval: 2},
-             (location)=>{
-                  setLocation({latitude:location.coords.latitude,longitude:location.coords.longitude})
-          })
-      }
-    }
-    checkPerm()
-  }, [])
-
-  return (
-
-    <View style={styles.container}>
-      <MapView style={styles.mapStyle} initialRegion={{
-       latitude: 48.866667,
-      longitude: 2.333333,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421}}>
-        <Marker coordinate={{location}} description="Hello here"  title="me buddy"/>
-        </MapView>
-  </View>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -70,8 +37,8 @@ const styles = StyleSheet.create({
 
 
 var stackNavigator = createStackNavigator({
-home:App,
-map:MapScreen
+Home:App,
+Map:MapScreen
 });
 
 

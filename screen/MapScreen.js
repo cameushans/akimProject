@@ -6,7 +6,7 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 
 
-function Map() {
+export default function MapScreen( { navigation }) {
   const [location,setLocation] = useState({latitude:0,longitude:0});
 
 
