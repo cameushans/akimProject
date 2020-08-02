@@ -1,27 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React , {useEffect,useState} from 'react';
-import { StyleSheet, Text, View,ImageBackground ,Button } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { StyleSheet, Text, View,ImageBackground } from 'react-native';
 import MapView , { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
-import { MapScreen } from "./screen/MapScreen"
 
 
- function App ({ navigation }) {
-
-
-  
-  return (
-    <View style={styles.container}>
-          <Button title="go to map" onPress={()=> navigation.navigate("map")} />
-    </View>
-  );
-}
-
-
- function Map() {
+function Map() {
   const [location,setLocation] = useState({latitude:0,longitude:0});
 
 
@@ -67,12 +52,3 @@ const styles = StyleSheet.create({
 
 
 
-
-
-var stackNavigator = createStackNavigator({
-home:App,
-map:MapScreen
-});
-
-
-export default Navigation = createAppContainer(stackNavigator);
